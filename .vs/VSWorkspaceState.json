@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\modelos",
+    "\\src\\pages",
+    "\\src\\pages\\escolha-carros",
+    "\\src\\pages\\home",
+    "\\src\\providers",
+    "\\src\\providers\\carros-service"
+  ],
+  "SelectedNode": "\\src\\pages\\escolha-carros\\escolha-carros.ts",
+  "PreviewInSolutionExplorer": false
+}

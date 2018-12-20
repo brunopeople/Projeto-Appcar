@@ -1,0 +1,57 @@
+
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Veja aqui o Carro que você Escolheu</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+
+  <ion-slides pager="true">
+    <ion-slide *ngFor="let imagem of carro.imagem">
+      <img src="{{imagem}}" />
+    </ion-slide>
+  </ion-slides>
+
+  <ion-item-group>
+    <ion-item-divider color="light">
+      <ion-icon name="car"></ion-icon>
+      VEÍCULOS
+    </ion-item-divider>
+    <ion-item>Marca:{{carro.marca}}</ion-item>
+    <ion-item>R${{carro.preco}}</ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider color="light">
+        <ion-icon name="options"></ion-icon>
+        ACESSÓRIOS
+      </ion-item-divider>
+
+      <ion-item *ngFor="let acessorio of acessorios">
+          <ion-label>
+            <h2>{{acessorio.nome}}</h2>
+            <h4>{{acessorio.preco}}</h4>
+          </ion-label>
+
+        <ion-toggle #toggle color="secondary"
+         (ionChange)="atualizaTotal(toggle.checked, acessorio)"></ion-toggle>
+        </ion-item>
+    </ion-item-group>
+
+    <ion-item-divider color="light">
+      <span item-right>TOTAL: R$ {{precoTotal}}</span>
+    </ion-item-divider>
+
+    <ion-fab top right edge mini>
+      <button ion-fab>
+        <ion-icon name="arrow-dropright"></ion-icon>
+      </button>
+    </ion-fab>
+
+    <button ion-button block>Avançar</button>
+</ion-content>
