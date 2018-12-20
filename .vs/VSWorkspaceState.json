@@ -5,11 +5,11 @@
     "\\src\\app",
     "\\src\\modelos",
     "\\src\\pages",
-    "\\src\\pages\\escolha-carros",
+    "\\src\\pages\\escolha",
     "\\src\\pages\\home",
     "\\src\\providers",
     "\\src\\providers\\carros-service"
   ],
-  "SelectedNode": "\\src\\pages\\escolha-carros\\escolha-carros.ts",
+  "SelectedNode": "\\src\\pages\\escolha\\escolha.html",
   "PreviewInSolutionExplorer": false
 }
