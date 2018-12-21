@@ -1,9 +1,4 @@
-<!--
-  Generated template for the EscolhaPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -14,8 +9,10 @@
 
 
 <ion-content padding>
+
+
   <ion-slides pager="true">
-    <ion-slide *ngFor="let foto of carros.fotos">
+    <ion-slide *ngFor="let foto of carro.fotos">
       <img src="{{foto}}"/>
     </ion-slide>
   </ion-slides>
@@ -23,7 +20,7 @@
 
   <ion-item-group>
     <ion-item-divider color="light">
-      <ion-icon name="people"></ion-icon>
+      <ion-icon name="car"></ion-icon>
       CARRO
     </ion-item-divider>
 
@@ -48,12 +45,18 @@
   </ion-item-group>
 
   <ion-item-divider color="light">
-    <span item-right>TOTAL: R${{precoTotal}}</span>
+    <span item-right>TOTAL: R$ {{precoTotal}} </span>
   </ion-item-divider>
 
-  <ion-fab top-right>
+  <ion-fab top-right edge mini>
     <button ion-fab>
       <ion-icon name="arrow-dropright"></ion-icon>
+     </button>
+  </ion-fab>
+
+  <ion-fab top right edge>
+     <button ion-fab(click)="avancaCadastro()">
+       <ion-icon name="arrow-dropright"></ion-icon>
      </button>
   </ion-fab>
 </ion-content>

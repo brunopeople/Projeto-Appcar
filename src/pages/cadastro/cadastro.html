@@ -1,0 +1,37 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Cadastro Carro</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <h2>{{carro.nome}}</h2>
+  R$ {{precoTotal}}
+
+  <form>
+    <ion-item>
+      <ion-label stacked>Marca:</ion-label>
+      <ion-input [(ngModel)]="marca" name="marca"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Placa:</ion-label>
+      <ion-input [(ngModel)]="placa" name="placa"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Data de Fabricação:</ion-label>
+      <ion-datetime [(ngModel)]="data" name="data" displayFormat="DD/MM/YY"></ion-datetime>
+    </ion-item>
+  </form>
+
+  <ion-fab top right edge>
+    <button ion-fab>
+      <ion-icon name="send"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

@@ -1,5 +1,5 @@
 export interface Carro{
-marca: string;
+nome: string;
 preco: number;
 fotos: string[];
 
