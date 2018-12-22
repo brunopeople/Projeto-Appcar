@@ -13,7 +13,7 @@
   <h2>{{carro.nome}}</h2>
   R$ {{precoTotal}}
 
-  <form>
+  <form (ngSubmit)="gravar" #formulario="ngForm">
     <ion-item>
       <ion-label stacked>Marca:</ion-label>
       <ion-input [(ngModel)]="marca" name="marca"></ion-input>
@@ -30,7 +30,7 @@
   </form>
 
   <ion-fab top right edge>
-    <button ion-fab>
+    <button ion-fab (click)="formulario.ngSubmit.emit()">
       <ion-icon name="send"></ion-icon>
     </button>
   </ion-fab>

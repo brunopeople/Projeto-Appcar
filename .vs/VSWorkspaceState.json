@@ -5,11 +5,12 @@
     "\\src\\app",
     "\\src\\modelos",
     "\\src\\pages",
+    "\\src\\pages\\cadastro",
     "\\src\\pages\\escolha",
     "\\src\\pages\\home",
     "\\src\\providers",
-    "\\src\\providers\\carros-service"
+    "\\src\\providers\\cadastros-service"
   ],
-  "SelectedNode": "\\src\\pages\\escolha\\escolha.html",
+  "SelectedNode": "\\src\\app\\app.module.ts",
   "PreviewInSolutionExplorer": false
 }
