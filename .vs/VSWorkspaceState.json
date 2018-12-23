@@ -9,8 +9,9 @@
     "\\src\\pages\\escolha",
     "\\src\\pages\\home",
     "\\src\\providers",
-    "\\src\\providers\\cadastros-service"
+    "\\src\\providers\\agendamento-service",
+    "\\src\\providers\\cadastro-dao"
   ],
-  "SelectedNode": "\\src\\app\\app.module.ts",
+  "SelectedNode": "\\src\\pages\\cadastro\\cadastro.ts",
   "PreviewInSolutionExplorer": false
 }

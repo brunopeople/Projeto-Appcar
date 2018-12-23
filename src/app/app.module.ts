@@ -17,6 +17,8 @@ import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/observable/mergeMap';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/catch';
+import { CadastroDaoProvider } from '../providers/cadastro-dao/cadastro-dao';
+import { AgendamentoServiceProvider } from '../providers/agendamento-service/agendamento-service';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import 'rxjs/add/observable/catch';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CarrosServiceProvider,
-    CadastrosServiceProvider
+    CadastrosServiceProvider,
+    CadastroDaoProvider,
+    AgendamentoServiceProvider
   ],
 })
 export class AppModule {}

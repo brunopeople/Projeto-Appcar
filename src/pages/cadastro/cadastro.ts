@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Storage} from '@ionic/storage';
+import {Carro} from '../../modelos/carro';
+import {AgendamentoServiceProvider} from '../../providers/agendamentos-service/agendamentos-service';
+import {Cadastro} from '../../modelos/cadastro';
+import {CadastroDaoProvider} from '../../providers/cadastro-dao/cadastro-dao';
 
 @IonicPage()
 @Component({
@@ -12,8 +16,9 @@ export class CadastroPage {
 public carro: Carro;
 public precoTotal: Number;
 public nome: string = '';
+public email: string; 
 public data: string = new Date().toISOString();
-public placa: string = '';
+public endereco: string = '';
 
 private _alerta: Alert;
 
@@ -28,72 +33,62 @@ private _alerta: Alert;
 
   }
 
+  agenda(){
+    if(!this.nome || !this.endereco || !this.email){
+      this._alertCtrl.create({
+        title: 'Preenchimento Obrigatório pra concluir o agendamento',
+        subtitle: 'Por Favor Conclua o Preenchimento!',
+        buttons:[
+          {text: 'ok'}
+        ]
+      }).present();
 
-  gravar(){
-  console.log(this.placa);
-  console.log(this.nome);
-  console.log(this.data);
-  }
+      return;
+    }
 
-  salva(cadastro){
-  let chave = this.nome + this.data.substr(0,10);
-  let promise = this._storage.set(chave, cadastro);
-
-  return Observable.fromPromise(promise);
-  }
-
-  gravar(){
-  let cadastro:Cadastro = {
-    nome: this.nome,
-    placa: this.placa,
-    data: this.data,
-    precoTotal: this.precoTotal,
-    confirmado: false,
-    enviado: false;
+    let cadastro: Cadastro = {
+      nomeCliente : this.nome,
+      enderecoCliente: this.endereco,
+      emailCliente: this.email,
+      modeloCarro: this.carro.nome,
+      precoTotal: this.precoTotal,
+      confirmado: false,
+      enviado: false,
+      data: this.data
     };
-  }
 
-  gravar(){
-  if(!this.nome || !this.placa || !this.data){
-  this._alertCtrl.create({
-  title: 'Aviso',
-  subtitle: 'Preencha todos os campos',
-  buttons:[
-  {text:'OK', handler:() => {this.navCtrl.setRoot(HomePage)}}
+    this._alerta = this._alertCtrl.create({
+    title: 'Aviso',
+    buttons: [
+      text: 'ok',
+      handler:() =>{
+        this.navCtrl.setRoot(HomePage);
+        }
+      }
     ]
-  }).present();
-  return;
-  }
+    });
 
-  }
+    let mensagem = '';
 
-  this._cadastroService.compra(cadastro)
-  .mergeMap( (valor)=>{
-  let Observable = this.salva(cadastro)
-
-  if(valor instaceof Error){
-    throw valor;
-  }
-
-  return observable;
-
-  }) 
-  .finally(
-
-  () => {
+    this._agendamentoDao.ehDuplicado(cadastro).mergeMap(ehDuplicado =>{
+      if(ehDuplicado){
+        throw new Error ('Cadastro Existente!');
+      }
+      return this._cadastroService.cadastro(cadastro);
+    }).mergeMap((valor) => {
+      let observable = this._cadastroDao.salva(cadastro);
+        if(valor instanceof Error) {
+          throw valor;
+        }
+        return observable;
+    }).finally(
+    () => {
       this._alerta.setSubTitle(mensagem);
       this._alerta.present();
     }
-  )
-  .subscribe(
-
-  () => {
-    mensagem = 'Cadastro Realizado!';
-    },
-
-    (erro: Error) =>{
-      mensagem = error.message;
-    }
-   );
-
+    ).subscribe((
+      () => mensagem = 'Cadastro Realizado!',
+      (err: Error) => mensagem = err.message
+    );
+  }
 }

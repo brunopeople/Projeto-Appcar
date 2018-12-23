@@ -1,8 +1,9 @@
 export interface Cadastro{
-  placa: string,
-  nome: string,
+  nomeCliente: string,
+  enderecoCliente: string,
+  modeloCarro: string,
   data: string,
   precoTotal: number,
   confirmado:boolean,
-  enviado:boolean;
+  enviado:boolean
 }
