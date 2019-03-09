@@ -20,7 +20,7 @@ public precoTotal: number;
   public navParams: NavParams) {
 
   this.carro = this.navParams.get('carroSelecionado');
-  this.precoTotal = 0;
+  this._precoTotal = 0;
   this.acessorios = [
 
     {nome:'FREIO ABS', preco: 600 },
@@ -44,6 +44,12 @@ public precoTotal: number;
       carroSelecionado: this.carro,
       precoTotal: this.precoTotal
     });
+  }
+
+
+  get precoTotal()
+  {
+    return this._precoTotal;
   }
 
   ionViewDidLoad() {

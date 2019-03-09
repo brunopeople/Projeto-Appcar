@@ -17,14 +17,7 @@ export class HomePage implements NavLifecycles {
   constructor(public navCtrl: NavController,
   private _loadingCtrl: LoadingController,
   private _alertCtrl: AlertController,
-  private _carrosService: CarrosServiceProvider ) {
-
-    
-      
-    
-
-    
-  }
+  private _carrosService: CarrosServiceProvider ) {}
 
   ionViewDidLoad(){
     let loading = this._loadingCtrl.create({
@@ -33,7 +26,8 @@ export class HomePage implements NavLifecycles {
 
     loading.present();
 
-    this._carrosService.lista().subscribe(
+    this._carrosService.lista()
+    .subscribe(
       (carros) => {
         this.carros = carros;
         loading.dismiss();
@@ -62,9 +56,3 @@ export class HomePage implements NavLifecycles {
       });
     }
    }
-
-  
-
-    
-  
- 

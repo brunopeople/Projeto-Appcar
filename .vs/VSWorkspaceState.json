@@ -3,15 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\modelos",
     "\\src\\pages",
     "\\src\\pages\\cadastro",
     "\\src\\pages\\escolha",
     "\\src\\pages\\home",
     "\\src\\providers",
-    "\\src\\providers\\agendamento-service",
-    "\\src\\providers\\cadastro-dao"
+    "\\src\\providers\\cadastros-service",
+    "\\src\\providers\\carros-service"
   ],
-  "SelectedNode": "\\src\\pages\\cadastro\\cadastro.ts",
+  "SelectedNode": "\\src\\app\\app.module.ts",
   "PreviewInSolutionExplorer": false
 }
