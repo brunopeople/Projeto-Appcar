@@ -3,14 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\modelos",
     "\\src\\pages",
     "\\src\\pages\\cadastro",
     "\\src\\pages\\escolha",
     "\\src\\pages\\home",
     "\\src\\providers",
-    "\\src\\providers\\cadastros-service",
-    "\\src\\providers\\carros-service"
+    "\\src\\providers\\agendamentos-service"
   ],
-  "SelectedNode": "\\src\\app\\app.module.ts",
+  "SelectedNode": "\\src\\modelos\\agendamento.ts",
   "PreviewInSolutionExplorer": false
 }
