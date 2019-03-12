@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Carro} from '../../modelos/carros';
 import {Acessorio} from '../../modelos/acessorio';
+import {CadastroPage} from '../cadastro/cadastro';
 
 
 
@@ -44,6 +45,11 @@ public precoTotal: number;
       carroSelecionado: this.carro,
       precoTotal: this.precoTotal
     });
+  }
+
+
+  get precoTotal(){
+    return this._precoTotal;
   }
 
   ionViewDidLoad() {

@@ -6,18 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { EscolhaPage } from '../pages/escolha/escolha';
 import {HttpClientModule} from '@angular/common/http';
 import { CarrosServiceProvider } from '../providers/carros-service/carros-service';
-import { CadastrosServiceProvider } from '../providers/cadastros-service/cadastros-service';
-
-import 'rxjs/add/operator/finally';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/observable/fromPromise';
-import 'rxjs/add/observable/mergeMap';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/observable/catch';
-import { CadastroDaoProvider } from '../providers/cadastro-dao/cadastro-dao';
 import { AgendamentoServiceProvider } from '../providers/agendamento-service/agendamento-service';
 
 @NgModule({
@@ -30,12 +20,7 @@ import { AgendamentoServiceProvider } from '../providers/agendamento-service/age
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot({
-    name: 'Projeto-Appcar',
-    storeName: 'cadastro',
-    driverOrder:['indexeddb']
-
-    })
+    
   ],
 
   bootstrap: [IonicApp],
@@ -48,9 +33,7 @@ import { AgendamentoServiceProvider } from '../providers/agendamento-service/age
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CarrosServiceProvider,
-    CadastrosServiceProvider,
-    CadastroDaoProvider,
     AgendamentoServiceProvider
-  ],
+  ]
 })
 export class AppModule {}

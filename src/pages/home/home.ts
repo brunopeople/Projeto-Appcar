@@ -18,11 +18,6 @@ export class HomePage implements NavLifecycles {
   private _loadingCtrl: LoadingController,
   private _alertCtrl: AlertController,
   private _carrosService: CarrosServiceProvider ) {
-
-    
-      
-    
-
     
   }
 
