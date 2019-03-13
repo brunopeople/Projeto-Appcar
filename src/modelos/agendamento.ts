@@ -6,5 +6,6 @@ export interface Cadastro{
   precoTotal: number,
   confirmado:boolean,
   enviado:boolean,
-  confirmado: boolean
+  confirmado: boolean,
+  data:string
 }

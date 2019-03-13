@@ -5,8 +5,9 @@ import {AgendamentosServiceProvider} from '../../providers/agendamentos-service/
 import {HomePage} from '../home/home';
 import {Agendamento} from '../../modelos/agendamento';
 
-import {Storage} from '@ionic/storage';
-import {Observable} from 'rxjs/Observable';
+import {AgendamentoDaoProvider} from '../../providers/agendamento-dao/agendamento-dao';
+
+
 
 @IonicPage()
 @Component({
@@ -29,7 +30,7 @@ private _alerta: Alert;
   public navParams: NavParams,
   private _alertCtrl: AlertController,
   private _agendamentosService: AgendamentosServiceProvider,
-  private _storage: Storage)
+  private _agendamentoDao: AgendamentoDaoProvider)
   {
     this.carro = this.navParams.get('carroSelecionado');
     this.precoTotal = this.navParams.get('precoTotal');
@@ -54,9 +55,10 @@ private _alerta: Alert;
       enderecoCliente: this.endereco,
       emailCliente:this.email,
       modeloCarro:this.carro.nome,
-      precoTotal: this.precoTotal
+      precoTotal: this.precoTotal,
       confirmado: false,
-      enviado: false
+      enviado: false,
+      data: this.data
       };
 
       this._alerta = this._alertCtrl.create({
@@ -66,23 +68,30 @@ private _alerta: Alert;
         text: 'ok',
         handler:() => {
           this.navCtrl.setRoot(HomePage);
-        }
-      }
-      ]
+           }
+          }
+        ]
       });
 
       let mensagem = '';
 
-      this._agendamentosService.agenda(agendamento)
-      .mergeMap((valor) =>
+      this._agendamentoDao.ehDuplicado(agendamento)
+      .mergeMap(ehDuplicado =>{
 
-       let observable = this.salva(agendamento));
-       if(valor instanceof Error){
-          throw valor;
+      if(ehDuplicado){
+        throw new Error('Agendamento existente!');
+      }
 
+      return this._agendamentosService.agenda(agendamento)
+
+      }).mergeMap((valor) =>{
+
+          let observable = this._agendamentoDao.salva(agendamento);
+          if(valor instanceof Error){
+            throw valor;
           }
 
-        return observable;
+          return observable;
       })
       .finally(
         ()=> {
@@ -93,16 +102,7 @@ private _alerta: Alert;
       .subscribe(
         () => mensagem = 'Agendamento Realizado!',
         (err:Error) => mensagem = err.mensagem
-
-        
       );
-    }
-
-    salva(agendamento){
-    let chave = this.email + this.data.substr(0,10);
-    let promise = this._storage.set(chave, agendamento);
-
-    return Observable.fromPromise(promise);
     }
  
   }
