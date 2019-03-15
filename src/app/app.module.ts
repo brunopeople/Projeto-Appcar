@@ -35,7 +35,7 @@ import { AgendamentoDaoProvider } from '../providers/agendamento-dao/agendamento
     IonicStorageModule.forRoot({
     name: 'Appcar',
     storeName: 'agendamentos',
-    driveOrder: ['indexado']
+    driveOrder: ['indexaddb']
     })
   ],
 

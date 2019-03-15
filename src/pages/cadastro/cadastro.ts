@@ -3,16 +3,15 @@ import { IonicPage, NavController, NavParams, AlertController, Alert } from 'ion
 import {Carro} from '../../modelos/carros';
 import {AgendamentosServiceProvider} from '../../providers/agendamentos-service/agendamentos-service';
 import {HomePage} from '../home/home';
+import {AgendamentoDaoProvider} from '../../providers/agendamento-dao/agendamento-dao';
 import {Agendamento} from '../../modelos/agendamento';
-
-import {Storage} from '@ionic/storage';
-import {Observable} from 'rxjs/Observable';
 
 @IonicPage()
 @Component({
   selector: 'page-cadastro',
   templateUrl: 'cadastro.html',
 })
+
 export class CadastroPage {
 
 public carro: Carro;
@@ -29,7 +28,7 @@ private _alerta: Alert;
   public navParams: NavParams,
   private _alertCtrl: AlertController,
   private _agendamentosService: AgendamentosServiceProvider,
-  private _storage: Storage)
+  private _agedamentoDao: AgendamentoDaoProvider)
   {
     this.carro = this.navParams.get('carroSelecionado');
     this.precoTotal = this.navParams.get('precoTotal');
@@ -54,9 +53,10 @@ private _alerta: Alert;
       enderecoCliente: this.endereco,
       emailCliente:this.email,
       modeloCarro:this.carro.nome,
-      precoTotal: this.precoTotal
+      precoTotal: this.precoTotal,
       confirmado: false,
-      enviado: false
+      enviado: false,
+      data: this.data
       };
 
       this._alerta = this._alertCtrl.create({
@@ -67,18 +67,25 @@ private _alerta: Alert;
         handler:() => {
           this.navCtrl.setRoot(HomePage);
         }
-      }
+       }
       ]
-      });
+    });
 
       let mensagem = '';
 
-      this._agendamentosService.agenda(agendamento)
-      .mergeMap((valor) =>
+      this._agedamentoDao.ehDuplicado(agendamento)
+          .mergeMap(ehDuplicado => {
+            if(ehDuplicado){
+              throw new Error('Agendamento Existente!');
+            }
 
-       let observable = this.salva(agendamento));
-       if(valor instanceof Error){
-          throw valor;
+            return this._agendamentosService.agenda(agendamento)
+          })
+           .mergeMap((valor) =>{
+  
+            let observable = this_agendamentoDao.salva(agendamento);
+            if(valor instanceof Error){
+              throw valor;
 
           }
 
@@ -92,18 +99,9 @@ private _alerta: Alert;
       )
       .subscribe(
         () => mensagem = 'Agendamento Realizado!',
-        (err:Error) => mensagem = err.mensagem
-
-        
+        (err:Error) => mensagem = err.mensagem 
       );
     }
 
-    salva(agendamento){
-    let chave = this.email + this.data.substr(0,10);
-    let promise = this._storage.set(chave, agendamento);
-
-    return Observable.fromPromise(promise);
-    }
- 
   }
 

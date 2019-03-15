@@ -9,8 +9,8 @@
     "\\src\\pages\\escolha",
     "\\src\\pages\\home",
     "\\src\\providers",
-    "\\src\\providers\\agendamentos-service"
+    "\\src\\providers\\agendamento-dao"
   ],
-  "SelectedNode": "\\src\\modelos\\agendamento.ts",
+  "SelectedNode": "\\src\\providers\\agendamento-dao\\agendamento-dao.ts",
   "PreviewInSolutionExplorer": false
 }

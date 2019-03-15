@@ -1,4 +1,4 @@
-export interface Cadastro{
+export interface Agendamento{
   nomeCliente: string,
   enderecoCliente: string,
   modeloCarro: string,
@@ -6,5 +6,6 @@ export interface Cadastro{
   precoTotal: number,
   confirmado:boolean,
   enviado:boolean,
-  confirmado: boolean
+  confirmado: boolean,
+  enviado: boolean
 }
