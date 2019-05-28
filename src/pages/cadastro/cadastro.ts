@@ -51,7 +51,7 @@ private _alerta: Alert;
       let agendamento: Agendamento = {
       nomeCliente: this.nome,
       enderecoCliente: this.endereco,
-      emailCliente:this.email,
+      emailCliente: this.email,
       modeloCarro:this.carro.nome,
       precoTotal: this.precoTotal,
       confirmado: false,

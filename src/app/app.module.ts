@@ -25,7 +25,7 @@ import { AgendamentoDaoProvider } from '../providers/agendamento-dao/agendamento
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
+    HomePage
    
   ],
   imports: [

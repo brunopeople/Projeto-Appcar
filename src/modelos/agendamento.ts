@@ -7,5 +7,6 @@ export interface Agendamento{
   confirmado:boolean,
   enviado:boolean,
   confirmado: boolean,
-  enviado: boolean
-}
+  enviado: boolean,
+  data: string 
+  }
