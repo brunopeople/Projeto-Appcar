@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Alert } from 'ionic-angular';
-import {Carro} from '../../modelos/carros';
-import {AgendamentosServiceProvider} from '../../providers/agendamentos-service/agendamentos-service';
-import {HomePage} from '../home/home';
-import {Agendamento} from '../../modelos/agendamento';
+import { Carro} from '../../modelos/carros';
+import { AgendamentosServiceProvider} from '../../providers/agendamentos-service/agendamentos-service';
+import { HomePage } from '../home/home';
+import { Agendamento } from '../../modelos/agendamento';
 
 import {AgendamentoDaoProvider} from '../../providers/agendamento-dao/agendamento-dao';
 
@@ -101,7 +101,7 @@ private _alerta: Alert;
       )
       .subscribe(
         () => mensagem = 'Agendamento Realizado!',
-        (err:Error) => mensagem = err.mensagem
+        (err:Error) => mensagem = err.mensage
       );
     }
  

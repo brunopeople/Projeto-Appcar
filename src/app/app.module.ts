@@ -3,6 +3,8 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { LoginPage } from '../pages/login/login';
+
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -20,12 +22,14 @@ import 'rxjs/add/operator/catch';
 
 import {IonicStorageModule} from '@ionic/storage';
 import { AgendamentoDaoProvider } from '../providers/agendamento-dao/agendamento-dao';
+import { UsuariosServiceProvider } from '../providers/usuarios-service/usuarios-service';
 
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+    LoginPage
    
   ],
   imports: [
@@ -35,14 +39,15 @@ import { AgendamentoDaoProvider } from '../providers/agendamento-dao/agendamento
     IonicStorageModule.forRoot({
     name: 'Appcar',
     storeName: 'agendamentos',
-    driveOrder: ['indexeddb']
+    driverOrder: ['indexeddb']
     })
   ],
 
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginPage
   ],
   providers: [
     StatusBar,
@@ -50,7 +55,8 @@ import { AgendamentoDaoProvider } from '../providers/agendamento-dao/agendamento
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CarrosServiceProvider,
     AgendamentosServiceProvider,
-    AgendamentoDaoProvider
+    AgendamentoDaoProvider,
+    UsuariosServiceProvider
   ]
 })
 export class AppModule {}
