@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import {AgendamentoDaoProvider} from '../../providers/agendamento-dao/agendamento-dao';
-import {Agendamento} from '../../modelos/agendamento';
-import {AgendamentosServiceProvider} from '../../providers/agendamentos-service/agendamentos-service';
-
-
+import { AgendamentoDaoProvider } from '../../providers/agendamento-dao/agendamento-dao';
+import { Agendamento } from '../../modelos/agendamento';
+import { AgendamentosServiceProvider } from '../../providers/agendamentos-service/agendamentos-service';
 
 @IonicPage()
 @Component({
@@ -12,7 +10,6 @@ import {AgendamentosServiceProvider} from '../../providers/agendamentos-service/
   templateUrl: 'lista-agendamentos.html',
 })
 export class ListaAgendamentosPage {
-
 agendamentos: Agendamento [];
 private _alerta; 
 
