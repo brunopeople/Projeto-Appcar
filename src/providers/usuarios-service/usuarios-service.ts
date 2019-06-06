@@ -18,8 +18,8 @@ private _usuarioLogado: Usuario;
             .do((usuario: Usuario)=> this._usuarioLogado = usuario);
   }
 
- otemUsuarioLogado(){
+ obtemUsuarioLogado(){
    return this._usuarioLogado;
- }
+  }
 
 }

@@ -83,10 +83,9 @@ private _alerta: Alert;
           })
            .mergeMap((valor) =>{
   
-            let observable = this_agendamentoDao.salva(agendamento);
+            let observable = this._agendamentoDao.salva(agendamento);
             if(valor instanceof Error){
               throw valor;
-
           }
 
         return observable;
@@ -99,7 +98,7 @@ private _alerta: Alert;
       )
       .subscribe(
         () => mensagem = 'Agendamento Realizado!',
-        (err:Error) => mensagem = err.mensagem 
+        (err:Error) => mensagem = err.message 
       );
     }
 

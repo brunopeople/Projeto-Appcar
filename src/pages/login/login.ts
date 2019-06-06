@@ -37,7 +37,7 @@ export class LoginPage {
           () =>{
             this._alertCtrl.create({
               title: 'Falha no Login',
-              subtitle: 'Seu Email ou senha estão incorretos! Verifique!',
+              subTitle: 'Seu Email ou senha estão incorretos! Verifique!',
               buttons: [
                 {text: 'Ok'}
               ]

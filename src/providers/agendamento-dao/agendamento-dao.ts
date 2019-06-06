@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Agendamento} from '../../modelos/agendammento';
+import {Agendamento} from '../../modelos/agendamento';
 
 import {Storage} from '@ionic/storage';
 import {Observable} from 'rxjs/Observable';

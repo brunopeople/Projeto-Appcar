@@ -43,7 +43,7 @@ private _alerta;
 
   let mensagem = '';
 
-  this._agendamentoService.agenda(agendamento)
+  this._agendamentosService.agenda(agendamento)
   .mergeMap((valor) => {
 
     let observable = this._agendamentoDao.salva(agendamento);
@@ -53,9 +53,9 @@ private _alerta;
 
     return observable;
     
-  }).finally(
+  })
+  .finally(
   () => {
-
     this._alerta.setSubTitle(mensagem);
     this._alerta.present(); 
     }
