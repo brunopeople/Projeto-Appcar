@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController } from 'ionic-angular';
-import {Carro} from '../../modelos/carros';
+import {Carro} from '../../modelos/carro';
 import {CarrosServiceProvider} from '../../providers/carros-service/carros-service';
 import { NavLifecycles } from '../../utils/ionic/nav/nav-lifecycle';
 import { HttpErrorResponse } from '@angular/common/http';

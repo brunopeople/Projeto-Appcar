@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Alert } from 'ionic-angular';
-import {Carro} from '../../modelos/carros';
+import {Carro} from '../../modelos/carro';
 import {AgendamentosServiceProvider} from '../../providers/agendamentos-service/agendamentos-service';
 import {HomePage} from '../home/home';
 import {AgendamentoDaoProvider} from '../../providers/agendamento-dao/agendamento-dao';
@@ -83,10 +83,10 @@ private _alerta: Alert;
           })
            .mergeMap((valor) =>{
   
-            let observable = this._agendamentoDao.salva(agendamento);
-            if(valor instanceof Error){
-              throw valor;
-          }
+           let observable = this._agedamentoDao.salva(agendamento);
+           if(valor instanceof Error){
+             throw valor;
+           }
 
         return observable;
       })

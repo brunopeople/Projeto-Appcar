@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {Carro} from '../../modelos/carros';
+import {Carro} from '../../modelos/carro';
 import {Acessorio} from '../../modelos/acessorio';
 import {CadastroPage} from '../cadastro/cadastro';
 

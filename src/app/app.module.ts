@@ -36,7 +36,7 @@ import { UsuariosServiceProvider } from '../providers/usuarios-service/usuarios-
     IonicStorageModule.forRoot({
     name: 'Appcar',
     storeName: 'agendamentos',
-    driveOrder: ['indexaddb']
+    driverOrder: ['indexaddb']
     })
   ],
 

@@ -18,10 +18,8 @@ export class MyApp {
   rootPage:any = LoginPage;
 
   public paginas = [
-  {
-    titulo: 'Agendamentos', Component: ListaAgendamentosPage.name,
-    icone:'calendar'},
-    {titulo: 'Perfil', componente: PerfilPage.name, icone: 'person'}
+  { titulo: 'Agendamentos', Component: ListaAgendamentosPage.name, icone:'calendar'},
+  {titulo: 'Perfil', componente: PerfilPage.name, icone: 'person'}
     ];
 
   constructor(platform: Platform,
